@@ -167,29 +167,47 @@ var ALL_MEETINGS = [
 //  164 AND MORE — UPCOMING LEADS
 // ══════════════════════════════════════════════════════════════
 var LEADS_164 = [
-  ['May 07',  'Keri K. (OOA)'],
-  ['May 14',  'Carmen P.'],
-  ['May 21',  'Bryan P.'],
-  ['May 28',  'Jake W.'],
-  ['June 04', 'TBD (OOA)'],
+  ['June 04', 'Chris H. (OOA)'],
   ['June 11', 'Abby M.'],
   ['June 18', 'Bob A.'],
   ['June 25', 'Nathan M.'],
   ['July 02', 'Bill W. (OOA)'],
+  ['July 09', 'Brian K.'],
+  ['July 16', 'Allison D.'],
+  ['July 23', 'TBD'],
+  ['July 30', 'Reger B.'],
+  ['August 06', 'Ellen G. (00A)'],
+  ['August 13', 'Dan'],
+  ['August 20', 'Mike L.'],
+  ['August 27', 'Sam H.'],
+  ['September 03', 'Fran P. (OOA)'],
+  ['September 10', 'Liz G.'],
+  ['September 17', 'Liz G.'],
+  ['September 24', 'Liz G.'],
+  ['October 01', 'Karen T. (OOA)'],
+  ['October 08', '- TBD -'],
+  ['October 15', 'Irene S'],
+  ['October 22', 'Dave H.'],
+  ['October 29', 'Open Speaker Meeting'],
 ];
 
 // ══════════════════════════════════════════════════════════════
 //  SATURDAY STEP MEETING — UPCOMING LEADS
 // ══════════════════════════════════════════════════════════════
 var LEADS_SATURDAY_STEP = [
-  ['May 09',  'Bill M',      'Step 10'],
-  ['May 16',  'Katie S',     'Tradition 5'],
-  ['May 23',  'Nancy H',     'Step 11'],
-  ['May 30',  'Ellen G',     'Step 12'],
-  ['June 06', 'Heather R',   'Step 1'],
-  ['June 13', 'Megan F',     'Step 2'],
-  ['June 20', 'Kathleen M',  'Tradition 6'],
-  ['June 27', 'Katie C',     'Step 3'],
+  ['June 06', 'Irene or Heather R',   'Step 1'],
+  ['June 13', 'Joelle',               'Step 2'],
+  ['June 20', 'Kathleen M',           'Tradition 6'],
+  ['June 27', 'Katie C',              'Step 3'],
+  ['July 04', '-TBD-',                'Step 4'],
+  ['July 11', 'Karen T',              'Step 5'],
+  ['July 18', 'Jeff M',               'Tradition 7'],
+  ['July 25', 'Beth M',               'Step 6'],
+  ['August 01', 'Dan G',              'Step 7'],
+  ['August 08', 'Megan A',            'Step 8'],
+  ['August 15', 'Serena P',           'Tradition 8'],
+  ['August 22', 'Dana R',             'Step 9'],
+  ['August 29', 'Sarah M',            'Step 10'],
 ];
 
 // ══════════════════════════════════════════════════════════════
