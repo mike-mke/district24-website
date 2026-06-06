@@ -175,7 +175,7 @@ var LEADS_164 = [
   ['July 09', 'Brian K.'],
   ['July 16', 'Allison D.'],
   ['July 23', 'TBD'],
-  ['July 30', 'Reger B.'],
+  ['July 30', 'Roger B.'],
   ['August 06', 'Ellen G. (00A)'],
   ['August 13', 'Dan'],
   ['August 20', 'Mike L.'],
