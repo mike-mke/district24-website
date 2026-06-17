@@ -1,4 +1,5 @@
 .gitignore
+build
 dist
 .idea
 node_modules/
