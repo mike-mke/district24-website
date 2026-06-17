@@ -13,33 +13,27 @@ AMPLIFY_BRANCH="production"
 LOCAL_PORT="8080"
 
 # ── Build ────────────────────────────────────────────────────────────
-# Three separate Vite builds so each sub-site bundle has the correct
-# BASE_URL (import.meta.env.BASE_URL) baked in for BrowserRouter.
-#
-# Pieces SVGs live ONLY in build/pieces/.  The diagram generator always
-# fetches /pieces/<set>/<piece>.svg (absolute URL from origin root), so
-# one shared copy is all that's needed — duplicates in swcc/ and wcc/
-# are removed after each sub-site build.
+function app_build() {
+    rm -rf build
+    mkdir -p build
 
-rm -rf build
-mkdir -p build
+    npx babel js/index.js --out-file js/index.compiled.js --presets @babel/preset-react
+    cp -a index.html build/
+    cp -a css build/
+    cp -a js build/
+    rm build/js/index.js
+}
+# ── Package ────────────────────────────────────────────────────────────────────
+function app_package() {
+    [[ ! -d "dist" ]] && { echo "Creating dist/"; mkdir dist; }
+    [[ -f "dist/district24.zip" ]] && { echo "Removing old zip"; rm dist/*.zip; }
+    zip -r dist/district24.zip css js index.html -x "js/index.js" -x "*.DS_Store"
+}
 
-npx babel js/index.js --out-file js/index.compiled.js --presets @babel/preset-react
-cp -a index.html build/
-cp -a css build/
-cp -a js build/
-rm build/js/index.js
-
-# ── package ────────────────────────────────────────────────────────────────────
-[[ ! -d "dist" ]] && { echo "Creating dist/"; mkdir dist; }
-[[ -f "dist/district24.zip" ]] && { echo "Removing old zip"; rm dist/*.zip; }
-
-zip -r dist/district24.zip css js index.html -x "js/index.js" -x "*.DS_Store"
-
-# echo "All built!"
+# we always build, do not always package or deploy
+app_build
 
 # ── Deploy ───────────────────────────────────────────────────────────
-
 if [ "$DEPLOY" = "local" ]; then
     cp -a build/. /usr/local/nginx/html/
     echo "Deployed to local nginx!"
@@ -48,12 +42,8 @@ elif [ "$DEPLOY" = "aws" ]; then
     AMPLIFY_APP_ID="${AMPLIFY_APP_ID:?Need AMPLIFY_APP_ID}"
     AMPLIFY_BRANCH="${AMPLIFY_BRANCH:-main}"
 
-    # echo "Zipping build/..."
-    # mkdir -p dist
-    # rm -f dist/district24.zip
-    # (cd build && zip -qr ../dist/district24.zip .)
-
     echo "Creating Amplify deployment..."
+    app_package
     DEPLOY_JSON=$(aws amplify create-deployment \
         --app-id "$AMPLIFY_APP_ID" \
         --branch-name "$AMPLIFY_BRANCH" \
