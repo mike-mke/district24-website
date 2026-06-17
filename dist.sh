@@ -1,13 +1,14 @@
 #!/bin/zsh
 
-if [[ ! -d "dist" ]]; then
-    echo "Directory does not exist - creating it"
-	mkdir dist
-fi
+# ── compile JSX ────────────────────────────────────────────────────────────────
+echo "Compiling JSX…"
+npx babel js/index.js --out-file js/index.compiled.js --presets @babel/preset-react
+[[ $? -ne 0 ]] && { echo "Babel compile failed"; exit 1; }
 
-if [[ -f "dist/district24.zip" ]]; then
-    echo "File exists, deleting it"
-	rm dist/*.zip
-fi
+# ── package ────────────────────────────────────────────────────────────────────
+[[ ! -d "dist" ]] && { echo "Creating dist/"; mkdir dist; }
+[[ -f "dist/district24.zip" ]] && { echo "Removing old zip"; rm dist/*.zip; }
 
-zip -r dist/district24.zip css js index.html -x archive dist index.og.html
+zip -r dist/district24.zip css js index.html -x "js/index.js" -x "*.DS_Store"
+
+echo "Done → dist/district24.zip"
