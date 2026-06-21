@@ -663,8 +663,8 @@ function SaturdayStepPage() {
           <address className="address-block">Lumen Christi Catholic Church<br />2750 W Mequon Rd<br />Mequon, WI 53092</address>
         </Card>
         <Card title="📹 Zoom">
-          <ExtLink href="https://zoom.us/j/6701384020">Join Zoom Meeting</ExtLink>
-          <p className="page-p text-sm mt-sm">ID: 6701384020 · Passcode: fellowship<br />Phone: 312-626-6799</p>
+          <ExtLink href="https://us06web.zoom.us/j/86423007839?pwd=TzaGeBalHhPlfb96RfkDQ0dpW70ERG.1">Join Zoom Meeting</ExtLink>
+          <p className="page-p text-sm mt-sm">ID: 864 2300 7839 · Passcode: District24</p>
         </Card>
       </div>
       <Card title="Notes">
