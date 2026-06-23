@@ -41,8 +41,6 @@ var SERVICE_POSITIONS = [
 //  HOME PAGE — UPCOMING EVENTS
 // ══════════════════════════════════════════════════════════════
 var UPCOMING_EVENTS = [
-  { isoDate: '2026-05-16', label: 'Spring Workshop',                link: 'https://drive.google.com/file/d/1dLLLBAwEnDrselLSo8E6fMVAWRpbxgiV/view' },
-  { isoDate: '2026-06-14', label: 'Area 75 Spring Assembly',        link: null },
   { isoDate: '2026-09-13', label: 'Area 75 Pre-Conference Assembly', link: null },
   { isoDate: '2026-11-06', label: 'Area 75 Conference',             link: null },
 ];
@@ -167,8 +165,6 @@ var ALL_MEETINGS = [
 //  164 AND MORE — UPCOMING LEADS
 // ══════════════════════════════════════════════════════════════
 var LEADS_164 = [
-  ['June 04', 'Chris H. (OOA)'],
-  ['June 11', 'Abby M.'],
   ['June 18', 'Bob A.'],
   ['June 25', 'Nick P.'],
   ['July 02', 'Bill W. (OOA)'],
@@ -195,9 +191,6 @@ var LEADS_164 = [
 //  SATURDAY STEP MEETING — UPCOMING LEADS
 // ══════════════════════════════════════════════════════════════
 var LEADS_SATURDAY_STEP = [
-  ['June 06', 'Irene or Heather R',   'Step 1'],
-  ['June 13', 'Joelle',               'Step 2'],
-  ['June 20', 'Kathleen M',           'Tradition 6'],
   ['June 27', 'Katie C',              'Step 3'],
   ['July 04', '-TBD-',                'Step 4'],
   ['July 11', 'Karen T',              'Step 5'],
@@ -214,6 +207,5 @@ var LEADS_SATURDAY_STEP = [
 //  WOMEN'S BIG BOOK — QUARTERLY SPEAKERS
 // ══════════════════════════════════════════════════════════════
 var SPEAKERS_WOMENS_BIG_BOOK = [
-  { date: 'June 8, 2026',    type: 'Closed Speaker Meeting', speaker: 'TBD' },
   { date: 'September 2026',  type: 'Open Speaker Meeting',   speaker: 'TBD' },
 ];

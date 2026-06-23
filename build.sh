@@ -16,6 +16,9 @@ LOCAL_PORT="8080"
 function app_build() {
     rm -rf build
     mkdir -p build
+    rm -rf dist
+    mkdir -p dist
+    rm js/index.compiled.js
 
     npx babel js/index.js --out-file js/index.compiled.js --presets @babel/preset-react
     cp -a index.html build/
