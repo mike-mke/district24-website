@@ -192,7 +192,7 @@ var LEADS_164 = [
 // ══════════════════════════════════════════════════════════════
 var LEADS_SATURDAY_STEP = [
   ['June 27', 'Katie C',              'Step 3'],
-  ['July 04', '-TBD-',                'Step 4'],
+  ['July 04', 'Britta E',                'Step 4'],
   ['July 11', 'Karen T',              'Step 5'],
   ['July 18', 'Jeff M',               'Tradition 7'],
   ['July 25', 'Beth M',               'Step 6'],
