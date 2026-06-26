@@ -12,6 +12,20 @@ AMPLIFY_APP_ID="d2zcneygndvg6j"
 AMPLIFY_BRANCH="production"
 LOCAL_PORT="8080"
 
+
+usage() {
+  echo "Usage: $0 [local|docker|aws]"
+  echo ""
+  echo "  local   Build frontend and deploy to local nginx (/usr/local/nginx/html)"
+  echo "  docker  Build fresh Docker image and run via docker-compose"
+  echo "  aws     Build, tag, push Docker image and redeploy to AWS Amplify"
+  echo ""
+  echo "When deploying to AWS, first run:  aws login"
+  echo ""
+  exit 1
+}
+
+
 # ── Build ────────────────────────────────────────────────────────────
 function app_build() {
     rm -rf build
@@ -26,22 +40,28 @@ function app_build() {
     cp -a js build/
     rm build/js/index.js
 }
-# ── Package ────────────────────────────────────────────────────────────────────
+# ── Package ───────────────────────────────────────────────────────────────────
 function app_package() {
     [[ ! -d "dist" ]] && { echo "Creating dist/"; mkdir dist; }
     [[ -f "dist/district24.zip" ]] && { echo "Removing old zip"; rm dist/*.zip; }
     zip -r dist/district24.zip css js index.html -x "js/index.js" -x "*.DS_Store"
 }
 
-# we always build, do not always package or deploy
-app_build
-
-# ── Deploy ───────────────────────────────────────────────────────────
-if [ "$DEPLOY" = "local" ]; then
+# ── Deploy targets ────────────────────────────────────────────────────────────
+function cmd_local() {
     cp -a build/. /usr/local/nginx/html/
-    echo "Deployed to local nginx!"
+    echo "Deployed to local nginx"
+}
 
-elif [ "$DEPLOY" = "aws" ]; then
+function cmd_docker() {
+    docker build -t district24 .
+    # Stop and remove any existing container with the same name
+    docker rm -f district24 2>/dev/null || true
+    docker run -d -p $LOCAL_PORT:80 --name district24 district24
+    echo "Running at http://localhost:$LOCAL_PORT"
+}
+
+function cmd_aws() {
     AMPLIFY_APP_ID="${AMPLIFY_APP_ID:?Need AMPLIFY_APP_ID}"
     AMPLIFY_BRANCH="${AMPLIFY_BRANCH:-main}"
 
@@ -71,11 +91,18 @@ elif [ "$DEPLOY" = "aws" ]; then
         --output json
 
     echo "Deployment started (job $JOB_ID)!"
+}
 
-elif [ "$DEPLOY" = "docker" ]; then
-    docker build -t district24 .
-    # Stop and remove any existing container with the same name
-    docker rm -f district24 2>/dev/null || true
-    docker run -d -p $LOCAL_PORT:80 --name district24 district24
-    echo "Running at http://localhost:$LOCAL_PORT"
-fi
+# ── Entry point ───────────────────────────────────────────────────────────────
+# we always build, do not always package or deploy
+app_build
+
+
+[[ $# -ne 1 ]] && usage
+
+case "$1" in
+  local)  cmd_local  ;;
+  docker) cmd_docker ;;
+  aws)    cmd_aws    ;;
+  *)      usage      ;;
+esac
