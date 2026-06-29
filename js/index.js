@@ -8,6 +8,20 @@ function formatEventDate(isoDate) {
   return MONTH_NAMES[d.getMonth()] + ' ' + String(d.getDate()).padStart(2, '0');
 }
 
+// Parse "Month DD" (no year) lead date strings, assuming current year.
+// If the result is >6 months in the past it wraps to next year.
+function parseLeadDate(dateStr) {
+  var now = new Date();
+  var d = new Date(dateStr + ' ' + now.getFullYear());
+  if (now - d > 180 * 24 * 60 * 60 * 1000) d.setFullYear(d.getFullYear() + 1);
+  return d;
+}
+
+function isUpcomingLead(dateStr) {
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  return parseLeadDate(dateStr) >= today;
+}
+
 // ══════════════════════════════════════════════════════════════
 //  SMALL REUSABLE COMPONENTS
 // ══════════════════════════════════════════════════════════════
@@ -636,7 +650,7 @@ function Group164Page() {
           <table className="data-table">
             <thead><tr><th>Date</th><th>Speaker</th></tr></thead>
             <tbody>
-              {LEADS_164.map(([d, s], i) => (
+              {LEADS_164.filter(([d]) => isUpcomingLead(d)).map(([d, s], i) => (
                 <tr key={i} className={i % 2 === 0 ? 'stripe' : 'white'}>
                   <td><strong>{d}</strong></td><td>{s}</td>
                 </tr>
@@ -675,7 +689,7 @@ function SaturdayStepPage() {
           <table className="data-table">
             <thead><tr><th>Date</th><th>Speaker</th><th>Topic</th></tr></thead>
             <tbody>
-              {LEADS_SATURDAY_STEP.map(([d, s, t], i) => (
+              {LEADS_SATURDAY_STEP.filter(([d]) => isUpcomingLead(d)).map(([d, s, t], i) => (
                 <tr key={i} className={i % 2 === 0 ? 'stripe' : 'white'}>
                   <td><strong>{d}</strong></td><td>{s}</td><td className="italic text-muted">{t}</td>
                 </tr>
@@ -717,7 +731,11 @@ function WomensBigBookPage() {
         <p className="page-p text-sm text-muted">Women's Meeting · Handicap Access · Group ID: 000035432</p>
       </Card>
       <Card title="Upcoming Quarterly Speakers">
-        {SPEAKERS_WOMENS_BIG_BOOK.map((s, i) => (
+        {SPEAKERS_WOMENS_BIG_BOOK.filter(s => {
+          var today = new Date(); today.setHours(0, 0, 0, 0);
+          var d = new Date(s.date + ' 1'); // "September 2026 1" → first of month
+          return d >= today;
+        }).map((s, i) => (
           <p key={i} className="page-p">
             <strong>{s.date}</strong> – {s.type} – {s.speaker}
           </p>

@@ -173,7 +173,7 @@ var LEADS_164 = [
   ['July 23', 'Allison D.'],
   ['July 30', 'Roger B.'],
   ['August 06', 'Ellen G. (00A)'],
-  ['August 13', 'Dan'],
+  ['August 13', 'Open Speaker Meeting – Brian K. and Kay A.'],
   ['August 20', 'Mike L.'],
   ['August 27', 'Sam H.'],
   ['September 03', 'Fran P. (OOA)'],

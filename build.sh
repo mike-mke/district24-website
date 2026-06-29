@@ -20,7 +20,7 @@ usage() {
   echo "  docker  Build fresh Docker image and run via docker-compose"
   echo "  aws     Build, tag, push Docker image and redeploy to AWS Amplify"
   echo ""
-  echo "When deploying to AWS, first run:  aws login"
+  echo "When deploying to AWS, first run:  aws login --profile district24"
   echo ""
   exit 1
 }
