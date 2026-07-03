@@ -168,7 +168,7 @@ var LEADS_164 = [
   ['June 18', 'Bob A.'],
   ['June 25', 'Nick P.'],
   ['July 02', 'Bill W. (OOA)'],
-  ['July 09', 'Brian K.'],
+  ['July 09', 'Mike L.'],
   ['July 16', 'Bill M.'],
   ['July 23', 'Allison D.'],
   ['July 30', 'Roger B.'],
