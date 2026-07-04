@@ -10,15 +10,16 @@ RUN npm ci
 COPY . .
 
 # Build main site — mirrors what build.sh does locally
-RUN npx babel js/index.js --out-file js/index.compiled.js --presets @babel/preset-react && \
+RUN npx esbuild src/main.jsx --bundle --outfile=js/index.compiled.js \
+      --jsx-factory=React.createElement --jsx-fragment=React.Fragment --minify && \
     mkdir -p build && \
     cp -a index.html build/ && \
     cp -a css build/ && \
-    cp -a js build/ && \
-    rm build/js/index.js
+    mkdir -p build/js && \
+    cp -a js/index.compiled.js build/js/
 
 # ── Stage 2: Serve ────────────────────────────────────────────────────────────
 FROM nginx:latest
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build /usr/share/nginx/html
-EXPOSE 80
+EXPOSE 8080

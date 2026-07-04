@@ -32,19 +32,24 @@ function app_build() {
     mkdir -p build
     rm -rf dist
     mkdir -p dist
-    rm js/index.compiled.js
 
-    npx babel js/index.js --out-file js/index.compiled.js --presets @babel/preset-react
+    # Bundles every component under src/ (pages, shared components, data,
+    # utils) into a single compiled file. React/ReactDOM stay on the CDN
+    # (see index.html), so JSX compiles to React.createElement calls
+    # rather than bundling React itself.
+    npx esbuild src/main.jsx --bundle --outfile=js/index.compiled.js \
+        --jsx-factory=React.createElement --jsx-fragment=React.Fragment --minify
+
     cp -a index.html build/
     cp -a css build/
-    cp -a js build/
-    rm build/js/index.js
+    mkdir -p build/js
+    cp -a js/index.compiled.js build/js/
 }
 # ── Package ───────────────────────────────────────────────────────────────────
 function app_package() {
     [[ ! -d "dist" ]] && { echo "Creating dist/"; mkdir dist; }
     [[ -f "dist/district24.zip" ]] && { echo "Removing old zip"; rm dist/*.zip; }
-    zip -r dist/district24.zip css js index.html -x "js/index.js" -x "*.DS_Store"
+    zip -r dist/district24.zip css js index.html -x "*.DS_Store"
 }
 
 # ── Deploy targets ────────────────────────────────────────────────────────────

@@ -4,6 +4,7 @@
   "description": "Choose a self-explaining name for your project.",
   "main": "index.js",
   "scripts": {
+    "build": "esbuild src/main.jsx --bundle --outfile=js/index.compiled.js --jsx-factory=React.createElement --jsx-fragment=React.Fragment --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,8 +15,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.29.7",
-    "@babel/core": "^7.29.7",
-    "@babel/preset-react": "^7.29.7"
+    "esbuild": "^0.24.0"
   }
 }

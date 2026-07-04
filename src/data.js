@@ -1,7 +1,7 @@
 // ══════════════════════════════════════════════════════════════
 //  NAVIGATION
 // ══════════════════════════════════════════════════════════════
-var NAV_PAGES = [
+export const NAV_PAGES = [
   { label: 'Home',                           hash: '#/' },
   { label: 'Accessibilities & Treatment',    hash: '#/accessibilities' },
   { label: 'Calendar',                       hash: '#/calendar' },
@@ -15,7 +15,7 @@ var NAV_PAGES = [
   { label: 'Workshops',                      hash: '#/workshops' },
 ];
 
-var NAV_GROUPS = [
+export const NAV_GROUPS = [
   { label: 'All Groups in District 24',      hash: '#/groups' },
   { label: '164 and More',                   hash: '#/group-164' },
   { label: 'Saturday Step Meeting',          hash: '#/group-saturday-step' },
@@ -25,7 +25,7 @@ var NAV_GROUPS = [
 // ══════════════════════════════════════════════════════════════
 //  HOME PAGE — SERVICE POSITIONS
 // ══════════════════════════════════════════════════════════════
-var SERVICE_POSITIONS = [
+export const SERVICE_POSITIONS = [
   { pos: 'Accessibilities',   name: 'Julie S',         email: null,                    term: '2026-27' },
   { pos: 'Alternate DCM',     name: 'Carmen P',        email: '',                      term: '2025-26' },
   { pos: 'Corrections',       name: 'Abbe M & Gary B', email: null,                    term: '2026-27' },
@@ -41,7 +41,7 @@ var SERVICE_POSITIONS = [
 // ══════════════════════════════════════════════════════════════
 //  HOME PAGE — UPCOMING EVENTS
 // ══════════════════════════════════════════════════════════════
-var UPCOMING_EVENTS = [
+export const UPCOMING_EVENTS = [
   { isoDate: '2026-09-13', label: 'Area 75 Pre-Conference Assembly', link: null },
   { isoDate: '2026-11-06', label: 'Area 75 Conference',             link: null },
 ];
@@ -49,7 +49,7 @@ var UPCOMING_EVENTS = [
 // ══════════════════════════════════════════════════════════════
 //  WORKSHOPS PAGE — HISTORY
 // ══════════════════════════════════════════════════════════════
-var WORKSHOPS = [
+export const WORKSHOPS = [
   { year: '2026', text: 'Spring Workshop • UNITY IN ACTION • Tradition 3', link: 'https://drive.google.com/file/d/1dLLLBAwEnDrselLSo8E6fMVAWRpbxgiV/view' },
   { year: '2025', text: 'WORKING YOUR PROGRAM – PART 1: Welcome remarks, member shares, breakout sessions on Sponsorship, Tools, and Prayer/Meditation/Yoga.' },
   { year: '2024', text: 'PATHS TO RECOVERY: Speakers on the revolving door, emotional relapse, and service as a path to long-term sobriety. Speaker panel.' },
@@ -72,12 +72,12 @@ var WORKSHOPS = [
 // ══════════════════════════════════════════════════════════════
 //  ALL GROUPS PAGE — MEETINGS LIST
 // ══════════════════════════════════════════════════════════════
-var DAYS_ORDER = ['All', 'Online Available', 'Daily', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+export const DAYS_ORDER = ['All', 'Online Available', 'Daily', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 // ══════════════════════════════════════════════════════════════
 //  ALL GROUPS PAGE — MEETINGS CODES LIST
 // ══════════════════════════════════════════════════════════════
-var MEETING_CODES = [
+export const MEETING_CODES = [
   {ID: "code14", Value: "WB", Label: "Online Available"},
   {ID: "code01", Value: "A", Label: "Agnostics"},
   {ID: "code02", Value: "*", Label: "Al-Anon also meets"},
@@ -97,7 +97,7 @@ var MEETING_CODES = [
   {ID: "code20", Value: "Y", Label: "Young People Welcome"},
 ]
 
-var ALL_MEETINGS = [
+export const ALL_MEETINGS = [
   {name: "It's Six O'clock Somewhere Online Daily",id: "8131554111",day: "Daily",time: "6:00 PM",location: "Virtual",street: null,city: null,state: null,zip: null,notes: null,codes: [ "WB" ],zoom_id: "813 155 4111",zoom_passcode: "3Recovery5",zoom_url: "http://us06web.zoom.us/j/8131554111",motm: null},
   {name: "Upon Awakening Mon-Sat",id: "18068",day: "Monday",time: "6:30 AM",location: "24 Hour Club",street: "153 Green Bay Rd",city: "Thiensville",state: "WI",zip: "53092",notes: null,codes: [ "WB" ],zoom_id: "851 8190 6265",zoom_passcode: "District24",zoom_url: "https://us06web.zoom.us/j/85181906265?pwd=rRNLmYupMQIFGbT628SYnczIQDekSf.1",motm: null},
   {name: "24 Hr Club Mon Morning/Topic",id: "141454",day: "Monday",time: "10:00 AM",location: "24 Hour Club",street: "153 Green Bay Rd",city: "Thiensvlle",state: "WI",zip: "53092",notes: null,codes: [  ],zoom_id: null,zoom_passcode: null,zoom_url: null,motm: null},
@@ -161,12 +161,10 @@ var ALL_MEETINGS = [
   {name: "Sun Night Topic Gp 7:30 PM",id: "84705",day: "Sunday",time: "7:30 PM",location: "New Day Club",street: "11936 N Port Washington Rd",city: "Mequon",state: "WI",zip: "53092",notes: null,codes: [ "W" ],zoom_id: null,zoom_passcode: null,zoom_url: null,motm: null}
 ];
 
-
-
 // ══════════════════════════════════════════════════════════════
 //  164 AND MORE — UPCOMING LEADS
 // ══════════════════════════════════════════════════════════════
-var LEADS_164 = [
+export const LEADS_164 = [
   ['June 18', 'Bob A.'],
   ['June 25', 'Nick P.'],
   ['July 02', 'Bill W. (OOA)'],
@@ -192,7 +190,7 @@ var LEADS_164 = [
 // ══════════════════════════════════════════════════════════════
 //  SATURDAY STEP MEETING — UPCOMING LEADS
 // ══════════════════════════════════════════════════════════════
-var LEADS_SATURDAY_STEP = [
+export const LEADS_SATURDAY_STEP = [
   ['June 27', 'Katie C',              'Step 3'],
   ['July 04', 'Britta E',                'Step 4'],
   ['July 11', 'Karen T',              'Step 5'],
@@ -208,6 +206,6 @@ var LEADS_SATURDAY_STEP = [
 // ══════════════════════════════════════════════════════════════
 //  WOMEN'S BIG BOOK — QUARTERLY SPEAKERS
 // ══════════════════════════════════════════════════════════════
-var SPEAKERS_WOMENS_BIG_BOOK = [
+export const SPEAKERS_WOMENS_BIG_BOOK = [
   { date: 'September 2026',  type: 'Open Speaker Meeting',   speaker: 'TBD' },
 ];
