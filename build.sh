@@ -10,8 +10,8 @@ set -e
 DEPLOY="${1:-}"
 AMPLIFY_APP_ID="d2zcneygndvg6j"
 AMPLIFY_BRANCH="production"
+AWS_PROFILE="district24"
 LOCAL_PORT="8080"
-
 
 usage() {
   echo "Usage: $0 [local|docker|aws]"
@@ -20,7 +20,7 @@ usage() {
   echo "  docker  Build fresh Docker image and run via docker-compose"
   echo "  aws     Build, tag, push Docker image and redeploy to AWS Amplify"
   echo ""
-  echo "When deploying to AWS, first run:  aws login --profile district24"
+  echo "When deploying to AWS, first run:  aws login --profile $AWS_PROFILE"
   echo ""
   exit 1
 }
@@ -75,7 +75,7 @@ function cmd_aws() {
     DEPLOY_JSON=$(aws amplify create-deployment \
         --app-id "$AMPLIFY_APP_ID" \
         --branch-name "$AMPLIFY_BRANCH" \
-        --profile district24 \
+        --profile $AWS_PROFILE \
         --output json)
 
     JOB_ID=$(echo "$DEPLOY_JSON" | python3 -c "import sys,json; print(json.load(sys.stdin)['jobId'])")
@@ -92,7 +92,7 @@ function cmd_aws() {
         --app-id "$AMPLIFY_APP_ID" \
         --branch-name "$AMPLIFY_BRANCH" \
         --job-id "$JOB_ID" \
-        --profile district24 \
+        --profile $AWS_PROFILE \
         --output json
 
     echo "Deployment started (job $JOB_ID)!"
