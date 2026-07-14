@@ -188,20 +188,10 @@ export const LEADS_164 = [
 ];
 
 // ══════════════════════════════════════════════════════════════
-//  SATURDAY STEP MEETING — UPCOMING LEADS
+//  SATURDAY STEP MEETING — UPCOMING LEADS (live Google Sheet, CSV export)
 // ══════════════════════════════════════════════════════════════
-export const LEADS_SATURDAY_STEP = [
-  ['June 27', 'Katie C',              'Step 3'],
-  ['July 04', 'Britta E',                'Step 4'],
-  ['July 11', 'Karen T',              'Step 5'],
-  ['July 18', 'Jeff M',               'Tradition 7'],
-  ['July 25', 'Beth M',               'Step 6'],
-  ['August 01', 'Dan G',              'Step 7'],
-  ['August 08', 'Megan A',            'Step 8'],
-  ['August 15', 'Serena P',           'Tradition 8'],
-  ['August 22', 'Dana R',             'Step 9'],
-  ['August 29', 'Sarah M',            'Step 10'],
-];
+export const LEADS_SATURDAY_STEP_CSV_URL =
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vRAx7fyOhFV3ucvbu-kQgHVSjjbhuACmW77HDVxKlWO7IJb5CJd--GRmymoQXWFxWx4dGSryNQ4ZTba/pub?gid=362373249&single=true&output=csv';
 
 // ══════════════════════════════════════════════════════════════
 //  WOMEN'S BIG BOOK — QUARTERLY SPEAKERS

@@ -1,9 +1,61 @@
 import { Card } from '../components/Card.jsx';
 import { ExtLink } from '../components/ExtLink.jsx';
-import { LEADS_SATURDAY_STEP } from '../data.js';
-import { isUpcomingLead } from '../utils/dates.js';
+import { LEADS_SATURDAY_STEP_CSV_URL } from '../data.js';
+import { formatShortDate, daysAgo } from '../utils/dates.js';
+
+const MAX_AGE_DAYS = 8;
+
+// Minimal CSV line splitter — handles quoted fields with embedded commas/quotes.
+function splitCsvLine(line) {
+  const out = [];
+  let cur = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (line[i + 1] === '"') { cur += '"'; i++; } else { inQuotes = false; }
+      } else cur += c;
+    } else if (c === '"') {
+      inQuotes = true;
+    } else if (c === ',') {
+      out.push(cur); cur = '';
+    } else {
+      cur += c;
+    }
+  }
+  out.push(cur);
+  return out;
+}
+
+function parseCsv(text) {
+  const lines = text.split(/\r?\n/).filter(l => l.length);
+  if (!lines.length) return [];
+  const header = splitCsvLine(lines[0]).map(h => h.trim());
+  return lines.slice(1).map(line => {
+    const cells = splitCsvLine(line);
+    const row = {};
+    header.forEach((h, i) => { row[h] = (cells[i] || '').trim(); });
+    return row;
+  });
+}
 
 export function SaturdayStepPage() {
+  const [leads, setLeads] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch(LEADS_SATURDAY_STEP_CSV_URL)
+      .then(res => res.text())
+      .then(text => {
+        const rows = parseCsv(text)
+          .map(r => ({ date: new Date(r.Date), speaker: r.Speaker, topic: r.Topic }))
+          .filter(r => !isNaN(r.date) && daysAgo(r.date) <= MAX_AGE_DAYS)
+          .sort((a, b) => a.date - b.date);
+        setLeads(rows);
+      })
+      .catch(() => setLeads([]));
+  }, []);
+
   return (
     <div className="page">
       <h1 className="page-h1">Saturday Step Meeting</h1>
@@ -25,9 +77,9 @@ export function SaturdayStepPage() {
           <table className="data-table">
             <thead><tr><th>Date</th><th>Speaker</th><th>Topic</th></tr></thead>
             <tbody>
-              {LEADS_SATURDAY_STEP.filter(([d]) => isUpcomingLead(d)).map(([d, s, t], i) => (
+              {leads.map((l, i) => (
                 <tr key={i} className={i % 2 === 0 ? 'stripe' : 'white'}>
-                  <td><strong>{d}</strong></td><td>{s}</td><td className="italic text-muted">{t}</td>
+                  <td><strong>{formatShortDate(l.date)}</strong></td><td>{l.speaker}</td><td className="italic text-muted">{l.topic}</td>
                 </tr>
               ))}
             </tbody>

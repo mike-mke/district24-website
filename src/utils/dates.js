@@ -21,3 +21,15 @@ export function isUpcomingLead(dateStr) {
   var today = new Date(); today.setHours(0, 0, 0, 0);
   return parseLeadDate(dateStr) >= today;
 }
+
+// Whole days between today and a given Date (positive = date is in the past).
+export function daysAgo(date) {
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  var d = new Date(date); d.setHours(0, 0, 0, 0);
+  return Math.round((today - d) / (24 * 60 * 60 * 1000));
+}
+
+// Format a Date object as "Month DD" (no year), e.g. "July 18".
+export function formatShortDate(date) {
+  return MONTH_NAMES[date.getMonth()] + ' ' + String(date.getDate()).padStart(2, '0');
+}
