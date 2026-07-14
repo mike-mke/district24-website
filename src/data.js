@@ -174,7 +174,7 @@ export const LEADS_164 = [
   ['July 30', 'Roger B.'],
   ['August 06', 'Ellen G. (00A)'],
   ['August 13', 'Open Speaker Meeting – Brian K. and Kay A.'],
-  ['August 20', 'Alex'],
+  ['August 20', 'Alex K.'],
   ['August 27', 'Sam H.'],
   ['September 03', 'Fran P. (OOA)'],
   ['September 10', 'Liz G.'],
