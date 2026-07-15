@@ -162,30 +162,10 @@ export const ALL_MEETINGS = [
 ];
 
 // ══════════════════════════════════════════════════════════════
-//  164 AND MORE — UPCOMING LEADS
+//  164 AND MORE — UPCOMING LEADS (live Google Sheet, CSV export)
 // ══════════════════════════════════════════════════════════════
-export const LEADS_164 = [
-  ['June 18', 'Bob A.'],
-  ['June 25', 'Nick P.'],
-  ['July 02', 'Bill W. (OOA)'],
-  ['July 09', 'Mike L.'],
-  ['July 16', 'Bill M.'],
-  ['July 23', 'Barb M.'],
-  ['July 30', 'Roger B.'],
-  ['August 06', 'Ellen G. (00A)'],
-  ['August 13', 'Open Speaker Meeting – Brian K. and Kay A.'],
-  ['August 20', 'Alex K.'],
-  ['August 27', 'Sam H.'],
-  ['September 03', 'Fran P. (OOA)'],
-  ['September 10', 'Liz G.'],
-  ['September 17', 'Jess G.'],
-  ['September 24', 'Tim Mc.'],
-  ['October 01', 'Karen T. (OOA)'],
-  ['October 08', '– TBD –'],
-  ['October 15', 'Irene S'],
-  ['October 22', 'Dave H.'],
-  ['October 29', 'Open Speaker Meeting'],
-];
+export const LEADS_164_CSV_URL =
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-oxuf0055hyObMI2ZP5Uv9w6fVJXRGBNZ9oskqFXy2azpblbpunslSQNp82he5I8x6L-49ztk5TIy/pub?gid=186203275&single=true&output=csv';
 
 // ══════════════════════════════════════════════════════════════
 //  SATURDAY STEP MEETING — UPCOMING LEADS (live Google Sheet, CSV export)

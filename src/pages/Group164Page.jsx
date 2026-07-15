@@ -1,9 +1,25 @@
 import { Card } from '../components/Card.jsx';
 import { ExtLink } from '../components/ExtLink.jsx';
-import { LEADS_164 } from '../data.js';
-import { isUpcomingLead } from '../utils/dates.js';
+import { LEADS_164_CSV_URL } from '../data.js';
+import { formatShortDate, daysAgo } from '../utils/dates.js';
+import { parseCsv } from '../utils/csv.js';
 
 export function Group164Page() {
+  const [leads, setLeads] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch(LEADS_164_CSV_URL)
+      .then(res => res.text())
+      .then(text => {
+        const rows = parseCsv(text)
+          .map(r => ({ date: new Date(r.Date), speaker: r.Speaker }))
+          .filter(r => !isNaN(r.date) && daysAgo(r.date) <= 0)
+          .sort((a, b) => a.date - b.date);
+        setLeads(rows);
+      })
+      .catch(() => setLeads([]));
+  }, []);
+
   return (
     <div className="page">
       <h1 className="page-h1">164 and More</h1>
@@ -30,9 +46,9 @@ export function Group164Page() {
           <table className="data-table">
             <thead><tr><th>Date</th><th>Speaker</th></tr></thead>
             <tbody>
-              {LEADS_164.filter(([d]) => isUpcomingLead(d)).map(([d, s], i) => (
+              {leads.map((l, i) => (
                 <tr key={i} className={i % 2 === 0 ? 'stripe' : 'white'}>
-                  <td><strong>{d}</strong></td><td>{s}</td>
+                  <td><strong>{formatShortDate(l.date)}</strong></td><td>{l.speaker}</td>
                 </tr>
               ))}
             </tbody>
