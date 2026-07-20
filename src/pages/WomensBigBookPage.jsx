@@ -1,8 +1,34 @@
 import { Card } from '../components/Card.jsx';
 import { ExtLink } from '../components/ExtLink.jsx';
-import { SPEAKERS_WOMENS_BIG_BOOK } from '../data.js';
+import { MAX_AGE_DAYS } from '../data.js';
+import { MONDAY_WOMENS_BIG_BOOK_URL } from '../data.js';
+import { MONTH_NAMES, daysAgo } from '../utils/dates.js';
+import { parseCsv } from '../utils/csv.js';
 
 export function WomensBigBookPage() {
+  const [speakers, setSpeakers] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch(MONDAY_WOMENS_BIG_BOOK_URL)
+      .then(res => res.text())
+      .then(text => {
+        const rows = parseCsv(text)
+          .map(r => {
+            const date = new Date(r.Date);
+            const exact = /^true$/i.test(r.ExactDate);
+            return {
+              date,
+              description: r.Description,
+              label: exact ? `${MONTH_NAMES[date.getMonth()]} ${date.getDate()}` : MONTH_NAMES[date.getMonth()],
+            };
+          })
+          .filter(r => !isNaN(r.date) && daysAgo(r.date) <= MAX_AGE_DAYS)
+          .sort((a, b) => a.date - b.date);
+        setSpeakers(rows);
+      })
+      .catch(() => setSpeakers([]));
+  }, []);
+
   return (
     <div className="page">
       <h1 className="page-h1">Women's Big Book Meeting</h1>
@@ -28,15 +54,18 @@ export function WomensBigBookPage() {
         <p className="page-p text-sm text-muted">Women's Meeting · Handicap Access · Group ID: 000035432</p>
       </Card>
       <Card title="Upcoming Quarterly Speakers">
-        {SPEAKERS_WOMENS_BIG_BOOK.filter(s => {
-          var today = new Date(); today.setHours(0, 0, 0, 0);
-          var d = new Date(s.date + ' 1'); // "September 2026 1" → first of month
-          return d >= today;
-        }).map((s, i) => (
-          <p key={i} className="page-p">
-            <strong>{s.date}</strong> – {s.type} – {s.speaker}
-          </p>
-        ))}
+        <div className="table-wrap">
+          <table className="data-table">
+            <thead><tr><th>Date</th><th>Description</th></tr></thead>
+            <tbody>
+              {speakers.map((s, i) => (
+                <tr key={i} className={i % 2 === 0 ? 'stripe' : 'white'}>
+                  <td><strong>{s.label}</strong></td><td>{s.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </Card>
     </div>
   );

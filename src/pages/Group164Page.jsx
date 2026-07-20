@@ -1,5 +1,7 @@
 import { Card } from '../components/Card.jsx';
 import { ExtLink } from '../components/ExtLink.jsx';
+import { MAX_AGE_DAYS } from '../data.js';
+import { MAX_LEAD_ROWS } from '../data.js';
 import { LEADS_164_CSV_URL } from '../data.js';
 import { formatShortDate, daysAgo } from '../utils/dates.js';
 import { parseCsv } from '../utils/csv.js';
@@ -13,8 +15,9 @@ export function Group164Page() {
       .then(text => {
         const rows = parseCsv(text)
           .map(r => ({ date: new Date(r.Date), speaker: r.Speaker }))
-          .filter(r => !isNaN(r.date) && daysAgo(r.date) <= 0)
-          .sort((a, b) => a.date - b.date);
+          .filter(r => !isNaN(r.date) && daysAgo(r.date) <= MAX_AGE_DAYS)
+          .sort((a, b) => a.date - b.date)
+          .slice(0, MAX_LEAD_ROWS);
         setLeads(rows);
       })
       .catch(() => setLeads([]));

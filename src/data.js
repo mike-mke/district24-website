@@ -161,6 +161,10 @@ export const ALL_MEETINGS = [
   {name: "Sun Night Topic Gp 7:30 PM",id: "84705",day: "Sunday",time: "7:30 PM",location: "New Day Club",street: "11936 N Port Washington Rd",city: "Mequon",state: "WI",zip: "53092",notes: null,codes: [ "W" ],zoom_id: null,zoom_passcode: null,zoom_url: null,motm: null}
 ];
 
+
+export const MAX_AGE_DAYS = 0;
+export const MAX_LEAD_ROWS = 7;
+
 // ══════════════════════════════════════════════════════════════
 //  164 AND MORE — UPCOMING LEADS (live Google Sheet, CSV export)
 // ══════════════════════════════════════════════════════════════
@@ -179,3 +183,5 @@ export const LEADS_SATURDAY_STEP_CSV_URL =
 export const SPEAKERS_WOMENS_BIG_BOOK = [
   { date: 'September 2026',  type: 'Open Speaker Meeting',   speaker: 'TBD' },
 ];
+
+export const MONDAY_WOMENS_BIG_BOOK_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSoYA_XUy6sI6yGI334m6ZSglBlY-yK7Btm-qTN8Gn1L4ssgeRsg4JsylwW49Z5A7TXQf-L7gxIzfVu/pub?gid=370280706&single=true&output=csv'
