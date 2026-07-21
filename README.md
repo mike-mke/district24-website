@@ -4,11 +4,8 @@
 This project contains all the source code fro the District24 website. The site is currently hosted by AWS Amplify and can be found here: 
 https://www.aadistrict24.org
 
-## Installation
-Run the build.sh script and it provides usage instructions.
-
-## Usage
-Run the build.sh script and it provides usage instructions.
+## Development
+See [DEVELOPMENT.md](DEVELOPMENT.md) for build and deploy instructions.
 
 ## Roadmap
 Relatively static site; just need to periodically update the leads at the three Group-specific pages.

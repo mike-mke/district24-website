@@ -62,7 +62,7 @@ function cmd_docker() {
     docker build -t district24 .
     # Stop and remove any existing container with the same name
     docker rm -f district24 2>/dev/null || true
-    docker run -d -p $LOCAL_PORT:80 --name district24 district24
+    docker run -d -p $LOCAL_PORT:8080 --name district24 district24
     echo "Running at http://localhost:$LOCAL_PORT"
 }
 
