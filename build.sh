@@ -12,10 +12,12 @@ AMPLIFY_APP_ID="d2zcneygndvg6j"
 AMPLIFY_BRANCH="production"
 AWS_PROFILE="district24"
 LOCAL_PORT="8080"
+#LOCAL_PORT="80"
 
 usage() {
   echo "Usage: $0 [local|docker|aws]"
   echo ""
+  echo "  build   Build the frontend and stop)"
   echo "  local   Build frontend and deploy to local nginx (/usr/local/nginx/html)"
   echo "  docker  Build fresh Docker image and run via docker-compose"
   echo "  aws     Build, tag, push Docker image and redeploy to AWS Amplify"
@@ -62,7 +64,7 @@ function cmd_docker() {
     docker build -t district24 .
     # Stop and remove any existing container with the same name
     docker rm -f district24 2>/dev/null || true
-    docker run -d -p $LOCAL_PORT:8080 --name district24 district24
+    docker run -d -p $LOCAL_PORT:80 --name district24 district24
     echo "Running at http://localhost:$LOCAL_PORT"
 }
 
@@ -106,6 +108,7 @@ app_build
 [[ $# -ne 1 ]] && usage
 
 case "$1" in
+  build)  ;;
   local)  cmd_local  ;;
   docker) cmd_docker ;;
   aws)    cmd_aws    ;;

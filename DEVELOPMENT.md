@@ -4,7 +4,8 @@
 
 * git (v 2.x)
 * Node.js (v 20.x | also provides npm)
-* nginx OR Docker (any current version)
+* Either Rancher Desktop or Docker Desktop (current version)
+* nginx -- this is optional; this is great if you're flipping back and forth between multiple websites you're developing
 * IDE (Integrated Development Environment)
   * WebStorm (JetBrains)
   * PyCharm (JetBrains)
@@ -37,7 +38,7 @@ Either is a way to serve the built site locally so you can view it in a browser;
 - **Docker**: a container runtime. `./build.sh docker` builds an image (per `Dockerfile`, which runs its own `npm ci` + esbuild step) and runs it, mapping container port 8080 to `http://localhost:8080`. Nothing else needs to be installed on your machine besides Docker itself.
 
 ### IDE (Integrated Development Environment)
-Any editor works; these are just the ones in use on this project. VS Code is the most common choice for JS/React work (extensions for JSX/ESLint, integrated terminal). PyCharm and GoLand are JetBrains IDEs typically used for other projects/languages — if you reach for a JetBrains IDE specifically for this repo, WebStorm is JetBrains' JS/TS-focused option.
+Any editor works; these are just the ones recommended for use on this project. VS Code is the most common choice for JS/React work (extensions for JSX/ESLint, integrated terminal). The JetBrains IDEs are my personal favorites and WebStorm is their JS/TS-focused option.
 
 ## Build
 Now that you've installed all the prerequisites, you'll want to build and run the website locally. 
@@ -47,7 +48,7 @@ To install the software dependencies that are required to build the project, you
 ```bash
 npm install
 ```
-To build and deploy to Docker, run this:
+To build and deploy to Rancher or Docker, run this:
 ```bash
 ./build.sh docker
 ```
