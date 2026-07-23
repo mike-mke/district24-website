@@ -14,11 +14,15 @@ AWS_PROFILE="district24"
 LOCAL_PORT="8080"
 #LOCAL_PORT="80"
 
+if [ -z "${NGINX_HTML}" ]; then
+    NGINX_HTML="/usr/local/nginx/html"
+fi
+
 usage() {
   echo "Usage: $0 [local|docker|aws]"
   echo ""
   echo "  build   Build the frontend and stop)"
-  echo "  local   Build frontend and deploy to local nginx (/usr/local/nginx/html)"
+  echo "  local   Build frontend and deploy to local nginx (${NGINX_HTML})"
   echo "  docker  Build fresh Docker image and run via docker-compose"
   echo "  aws     Build, tag, push Docker image and redeploy to AWS Amplify"
   echo ""

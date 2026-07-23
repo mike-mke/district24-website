@@ -1,6 +1,7 @@
 .gitignore
 build
 dist
-.idea
 node_modules/
 js/index.compiled.js
+.idea
+.vscode

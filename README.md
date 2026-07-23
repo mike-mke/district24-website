@@ -5,6 +5,8 @@ This project contains all the source code fro the District24 website. The site i
 https://www.aadistrict24.org
 
 ## Development
+See [PREREQUISITES.md](PREREQUISITES.md) to get your local development environment set up.
+
 See [DEVELOPMENT.md](DEVELOPMENT.md) for build and deploy instructions.
 
 ## Roadmap
@@ -17,4 +19,4 @@ Mike L used Claude to create this website project.
 None.
 
 ## Project status
-Actively used.
+Actively maintained and used.
