@@ -3,15 +3,16 @@
 **A note for Windows:** this project's scripts (`build.sh`, etc.) are bash scripts targeting Linux-style paths, so these instructions assume you're using **WSL2** (Windows Subsystem for Linux) with an Ubuntu distro rather than native Windows tools. To set it up:
 1. Open PowerShell or Command Prompt as Administrator and run `wsl --install` (Windows 11, or recent Windows 10 builds — this installs WSL2 with Ubuntu by default).
 2. Reboot when prompted.
-3. Launch "Ubuntu" from the Start menu and finish the first-run setup (choose a Unix username/password).
-4. Do all the install steps below inside that Ubuntu terminal, and keep the project checked out on the Linux filesystem (e.g. `~/district24-website`) rather than under `/mnt/c/...` for much better performance.
+3. Launch "Ubuntu" from the Start menu and finish the first-run setup (choose a username/password to use in WSL/Ubuntu).
+   * Remember your username & password! You will need it.
+4. Do all the install steps below inside that Ubuntu terminal, and keep the project checked out on the Linux filesystem (e.g. `~/Projects/district24-website`) rather than under `/mnt/c/...` for much **better performance**.
 
 ## Prerequisites
 * git (v 2.x)
+* Node.js (v 20.x | also provides npm)
 * IDE (stands for **I**ntegrated **D**evelopment **E**nvironment)
     * WebStorm (JetBrains)
     * VS Code (Microsoft)
-* Node.js (v 20.x | also provides npm)
 * Either Rancher Desktop or Docker Desktop (current version)
 * nginx -- this is optional; this is great if you're flipping back and forth between multiple websites you're developing
 
@@ -104,10 +105,10 @@ Either is a way to serve the built site locally so you can view it in a browser;
 - **nginx**: a lightweight web server. `./build.sh local` copies the built files straight into nginx's web root (`/usr/local/nginx/html/`), so nginx must already be installed and running on your machine.
 - **Docker** (or Rancher Desktop, a Docker-compatible alternative): a container runtime. `./build.sh docker` builds an image (per `Dockerfile`, which runs its own `npm ci` + esbuild step) and runs it, mapping container port 8080 to `http://localhost:8080`. Nothing else needs to be installed on your machine besides Docker itself.
 
-**Rancher Desktop or Docker Desktop**
-- macOS: download the `.dmg` from [rancherdesktop.io](https://rancherdesktop.io/) or [docker.com](https://www.docker.com/products/docker-desktop/), drag to Applications, launch and let it finish initializing (this sets up a Linux VM + container runtime). In Rancher Desktop, set the container engine to "dockerd (moby)" under Preferences so plain `docker` commands work.
-- Windows: install Docker Desktop or Rancher Desktop from the same sites, running the Windows installer directly (not inside WSL). Both use WSL2 as their backend. For Docker Desktop, go to Settings > Resources > WSL Integration and enable integration for your Ubuntu distro — then run `docker build` / `docker run` from inside the WSL Ubuntu terminal where the rest of this project lives.
-
 **nginx**
 - macOS: `brew install nginx`. Note that Homebrew's default docroot (typically `/opt/homebrew/var/www` on Apple Silicon or `/usr/local/var/www` on Intel) doesn't match the `/usr/local/nginx/html/` path `build.sh local` deploys to. Either point nginx's config at `build/` yourself, or just use `./build.sh docker` instead — it needs no path setup.
 - Windows (via WSL): `sudo apt install nginx`. Same path mismatch as macOS applies (`apt` installs to `/etc/nginx`, not `/usr/local/nginx`), so again `./build.sh docker` is the path of least resistance unless you adjust the config.
+
+**Rancher Desktop or Docker Desktop**
+- macOS: download the `.dmg` from [rancherdesktop.io](https://rancherdesktop.io/) or [docker.com](https://www.docker.com/products/docker-desktop/), drag to Applications, launch and let it finish initializing (this sets up a Linux VM + container runtime). In Rancher Desktop, set the container engine to "dockerd (moby)" under Preferences so plain `docker` commands work.
+- Windows: install Rancher Desktop or Docker Desktop from the same sites, running the Windows installer directly (not inside WSL). Both use WSL2 as their backend. For Docker Desktop, go to Settings > Resources > WSL Integration and enable integration for your Ubuntu distro — then run `docker build` / `docker run` from inside the WSL Ubuntu terminal where the rest of this project lives.
