@@ -100,7 +100,7 @@ Either is a way to serve the built site locally so you can view it in a browser;
 
 **nginx**
 - macOS: _Instructions pending_ 
-- Windows (via WSL): `sudo apt install nginx`. Same path mismatch as macOS applies (`apt` installs to `/etc/nginx`, not `/usr/local/nginx`), so again `./build.sh docker` is the path of least resistance unless you adjust the config.
+- Windows (via WSL): `sudo apt install nginx`.
 
 **Rancher Desktop or Docker Desktop**
 - macOS: download the `.dmg` from [rancherdesktop.io](https://rancherdesktop.io/) or [docker.com](https://www.docker.com/products/docker-desktop/), drag to Applications, launch and let it finish initializing (this sets up a Linux VM + container runtime). In Rancher Desktop, set the container engine to "dockerd (moby)" under Preferences so plain `docker` commands work.
