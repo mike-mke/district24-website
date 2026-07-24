@@ -24,7 +24,7 @@ To build and deploy to nginx running locally, you'll first want to do _one_ of t
 ```bash
 pwd
 cd
-cat "export NGINX_HTML=/var/www/html" >> .bashrc
+echo "export NGINX_HTML=/var/www/html" >> .bashrc
 source .bashrc
 ```
 Now you want to switch back to the directory that was printed out after you typed in 'pwd'. To do so, type in cd <directory name>
