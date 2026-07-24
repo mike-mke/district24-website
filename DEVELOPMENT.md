@@ -27,7 +27,7 @@ cd
 echo "export NGINX_HTML=/var/www/html" >> .bashrc
 source .bashrc
 ```
-Now you want to switch back to the directory that was printed out after you typed in 'pwd'. To do so, type in cd <directory name>
+Now you want to switch back to the directory that was printed out after you typed in 'pwd'. To do so, type in cd {directory name}
 
 **Method 2**  
 You will make a small change to the build script.  
