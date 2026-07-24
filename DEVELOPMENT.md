@@ -11,27 +11,48 @@ To install the software dependencies that are required to **build** the project,
 ```bash
 npm install
 ```
-To build and deploy to nginx running locally, you'll first want to make a small change to the build script. 
-Edit `build.sh` and change the path specified after NGINX_HTML from `"/usr/local/nginx/html"` to `"/var/www/html"`
-Then do this:
+To build and deploy to nginx running locally, you'll first want to _one_ of the following. 
+**Method 1**
+- (recommended) Set the environment variable to the correct location for your html files
+- Open a Terminal in WebStorm. If this isn't an Ubuntu (WSL) Terminal stop! Google how to set up WebStorm so that it integrates with WSL.
+- Type in these commands:
+
+```bash
+pwd
+cd
+cat "export NGINX_HTML=/var/www/html" >> .bashrc
+source .bashrc
+```
+Now you want to switch back to the directory that was printed out after you typed in 'pwd'. To do so, type in cd <directory name>
+
+**Method 2**
+You will make a small change to the build script. 
+Edit `build.sh` (using WebStorm) and change the path specified after NGINX_HTML from `"/usr/local/nginx/html"` to `"/var/www/html"`
+
+After setting the env variable or changing the build script you will want to do this :
+
 ```bash
 ./build.sh local
 ```
+Use your browser to view the site locally:
+
+http://localhost/
 
 To build and deploy to Rancher or Docker, run this:
 ```bash
 ./build.sh docker
 ```
 
-The build process bundles `src/main.jsx` (esbuild) into `js/index.compiled.js`, copies `index.html` and `css` into `build/`. 
+In either case, the build process bundles `src/main.jsx` (esbuild) into `js/index.compiled.js`, and copies `index.html` and `css` into `build/`. 
 React and ReactDOM load from CDN via `index.html`, not bundled.
 
 ## Deploy targets
 
 ```
-./build.sh local    # build + deploy to local nginx (/usr/local/nginx/html/)
+./build.sh build    # builds the site, then stops
+./build.sh local    # build + deploy to local nginx (either /usr/local/nginx/html or /var/www/html)
 ./build.sh docker   # build Docker image + run at http://localhost:8080
 ./build.sh aws      # build + deploy to AWS Amplify
 ```
 
-AWS deploy requires `aws login --profile district24` first. It zips `css`, `js`, `index.html` into `dist/district24.zip`, creates an Amplify deployment (app `d2zcneygndvg6j`, branch `production`), uploads the zip, then starts the deployment.
+AWS deploy requires `aws login --profile district24` first.

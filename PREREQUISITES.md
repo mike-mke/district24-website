@@ -37,17 +37,13 @@ Version control system that tracks changes to the source and lets us collaborate
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 ```
-If you'll push/pull over SSH (as the clone command below does), generate a key and add it to your GitHub account under Settings > SSH and GPG keys:
-```bash
-ssh-keygen -t ed25519 -C "you@example.com"
-```
 
-To get the project:
+To get the project source code:
 ```bash
 cd
 mkdir Projects
 cd Projects
-git clone git@github-mike.com:mike-mke/district24-website.git
+git clone https://github.com/mike-mke/district24-website.git
 cd district24-website
 ```
 Day-to-day: `git pull` to get latest changes, `git checkout -b my-change` to start work on a branch, `git add` / `git commit` to save changes, `git push` to share them.
@@ -78,7 +74,7 @@ This reads `package.json` / `package-lock.json` and installs `esbuild`, the only
 
 
 ## IDE (Integrated Development Environment)
-While any editor works, you will want to use an IDE because of all the features it provides. The ones below are what we recommend for use on this project. The JetBrains IDEs are my personal favorites and WebStorm is their JS/TS-focused option. VS Code is a popular choice for JS/React work (extensions for JSX/ESLint, integrated terminal). 
+While any editor works, you will want to use an IDE because of all the features it provides. We primarily recommend **WebStorm**, which is free for non-commercial use. The JetBrains IDEs are my personal favorites and WebStorm is their JS/TS-focused option. VS Code is a popular choice for JS/React work (extensions for JSX/ESLint, integrated terminal). 
 
 **WebStorm**
 - macOS: download from [jetbrains.com/webstorm](https://www.jetbrains.com/webstorm/) (or install the JetBrains Toolbox app to manage installs/updates), open the `.dmg`, drag to Applications.
@@ -100,13 +96,10 @@ You can access and work on code directly out of your WSL distribution:
 
 
 ## nginx or Docker (optional)
-Either is a way to serve the built site locally so you can view it in a browser; you don't need both.
-
-- **nginx**: a lightweight web server. `./build.sh local` copies the built files straight into nginx's web root (`/usr/local/nginx/html/`), so nginx must already be installed and running on your machine.
-- **Docker** (or Rancher Desktop, a Docker-compatible alternative): a container runtime. `./build.sh docker` builds an image (per `Dockerfile`, which runs its own `npm ci` + esbuild step) and runs it, mapping container port 8080 to `http://localhost:8080`. Nothing else needs to be installed on your machine besides Docker itself.
+Either is a way to serve the built site locally so you can view it in a browser; you don't need both. I strongly recommend nginx, which is easy to install and use.
 
 **nginx**
-- macOS: `brew install nginx`. Note that Homebrew's default docroot (typically `/opt/homebrew/var/www` on Apple Silicon or `/usr/local/var/www` on Intel) doesn't match the `/usr/local/nginx/html/` path `build.sh local` deploys to. Either point nginx's config at `build/` yourself, or just use `./build.sh docker` instead — it needs no path setup.
+- macOS: _Instructions pending_ 
 - Windows (via WSL): `sudo apt install nginx`. Same path mismatch as macOS applies (`apt` installs to `/etc/nginx`, not `/usr/local/nginx`), so again `./build.sh docker` is the path of least resistance unless you adjust the config.
 
 **Rancher Desktop or Docker Desktop**

@@ -4,8 +4,8 @@
 This project contains all the source code for the District 24 website. The site can be found here: https://www.aadistrict24.org  
 
 ## Development
-See [PREREQUISITES.md](PREREQUISITES.md) to get your local development environment set up.  
-See [DEVELOPMENT.md](DEVELOPMENT.md) for build and deploy instructions.
+First, see [PREREQUISITES.md](PREREQUISITES.md) to get your local development environment set up.  
+Second, see [DEVELOPMENT.md](DEVELOPMENT.md) for build, run, and deploy instructions.
 
 ## Roadmap
 Relatively static site; just need to periodically update the leads at the three Group-specific pages.
