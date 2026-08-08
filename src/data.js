@@ -42,7 +42,10 @@ export const SERVICE_POSITIONS = [
 //  HOME PAGE — UPCOMING EVENTS
 // ══════════════════════════════════════════════════════════════
 export const UPCOMING_EVENTS = [
+  { isoDate: '2026-08-13', label: '164 & More • Open Speaker Meeting', link: 'https://drive.google.com/file/d/1iGsdE-wXnQHO5UB9YRaMf8yqQj44IAWZ/view' },
+  { isoDate: '2026-08-15', label: 'New Day Club • Open Speaker Meeting', link: 'https://drive.google.com/file/d/1Bb3o5ip3kiWMtjhEfQETEBUvYZTFS1Se/view' },
   { isoDate: '2026-09-13', label: 'Area 75 Pre-Conference Assembly', link: null },
+  { isoDate: '2026-09-25', label: 'Sobriety Social • Cedarburg American Legion', link: 'https://drive.google.com/file/d/1HQVq1DiAb4pMFr1-WPKGc5CvuwJQmnJF/view' },
   { isoDate: '2026-11-06', label: 'Area 75 Conference',             link: null },
 ];
 
