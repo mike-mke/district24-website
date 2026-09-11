@@ -13,10 +13,7 @@ AMPLIFY_BRANCH="production"
 AWS_PROFILE="district24"
 LOCAL_PORT="8080"
 #LOCAL_PORT="80"
-
-if [ -z "${NGINX_HTML}" ]; then
-    NGINX_HTML="/usr/local/nginx/html"
-fi
+NGINX_HTML="${NGINX_HTML:-/usr/local/nginx/html}"
 
 usage() {
   echo "Usage: $0 [local|docker|aws]"
