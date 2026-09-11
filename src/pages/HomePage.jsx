@@ -1,9 +1,30 @@
 import { Card } from '../components/Card.jsx';
 import { ExtLink } from '../components/ExtLink.jsx';
-import { UPCOMING_EVENTS, SERVICE_POSITIONS } from '../data.js';
-import { formatEventDate } from '../utils/dates.js';
+import { SERVICE_POSITIONS, DISTRICT_24_EVENTS_URL } from '../data.js';
+import { formatEventDate, parseEventDate } from '../utils/dates.js';
+import { parseCsv } from '../utils/csv.js';
 
 export function HomePage() {
+  const [events, setEvents] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch(DISTRICT_24_EVENTS_URL)
+      .then(res => res.text())
+      .then(text => {
+        const cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 2);
+        const rows = parseCsv(text)
+          .map(r => ({ isoDate: r.Date, isoEndDate: r.EndDate || null, label: r.Label, link: r.Link || null }))
+          .filter(ev => {
+            if (!ev.isoDate) return false;
+            const endRef = parseEventDate(ev.isoEndDate || ev.isoDate);
+            return !isNaN(endRef) && endRef >= cutoff;
+          })
+          .sort((a, b) => parseEventDate(a.isoDate) - parseEventDate(b.isoDate));
+        setEvents(rows);
+      })
+      .catch(() => setEvents([]));
+  }, []);
+
   return (
     <div className="page">
       <div className="hero">
@@ -39,13 +60,9 @@ export function HomePage() {
                   <tr><th>Date</th><th>Event</th></tr>
                   </thead>
                   <tbody>
-                  {UPCOMING_EVENTS.filter(ev => {
-                    if (!ev.isoDate) return true;
-                    const cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 2);
-                    return new Date(ev.isoDate) >= cutoff;
-                  }).map((ev, i) => (
+                  {events.map((ev, i) => (
                       <tr key={i} className={i % 2 === 0 ? 'stripe' : 'white'}>
-                          <td>{formatEventDate(ev.isoDate)}</td>
+                          <td>{formatEventDate(ev.isoDate, ev.isoEndDate)}</td>
                           <td className="text-muted text-sm">{ev.link ? <ExtLink href={ev.link}>{ev.label}</ExtLink> : <span>{ev.label}</span>}</td>
                       </tr>
                   ))}

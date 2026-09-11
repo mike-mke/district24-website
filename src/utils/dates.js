@@ -3,9 +3,28 @@
 // ══════════════════════════════════════════════════════════════
 export const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-export function formatEventDate(isoDate) {
-  var d = new Date(isoDate + 'T00:00:00');
-  return MONTH_NAMES[d.getMonth()] + ' ' + String(d.getDate()).padStart(2, '0');
+// Parses a date string that may be ISO ("2026-08-13") or the M/D/YYYY
+// format Google Sheets CSV exports use ("8/13/2026"). ISO date-only
+// strings need a local-midnight anchor or they parse as UTC and can
+// display as the previous day; M/D/YYYY already parses as local time.
+export function parseEventDate(dateStr) {
+  if (!dateStr) return new Date(NaN);
+  var s = String(dateStr).trim();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return new Date(s + 'T00:00:00');
+  return new Date(s);
+}
+
+export function formatEventDate(dateStr, endDateStr) {
+  var d = parseEventDate(dateStr);
+  if (isNaN(d)) return '';
+  var label = MONTH_NAMES[d.getMonth()] + ' ' + String(d.getDate()).padStart(2, '0');
+  if (!endDateStr) return label;
+  var e = parseEventDate(endDateStr);
+  if (isNaN(e)) return label;
+  if (e.getFullYear() === d.getFullYear() && e.getMonth() === d.getMonth()) {
+    return MONTH_NAMES[d.getMonth()] + ' ' + String(d.getDate()).padStart(2, '0') + '-' + String(e.getDate()).padStart(2, '0');
+  }
+  return label + ' - ' + MONTH_NAMES[e.getMonth()] + ' ' + String(e.getDate()).padStart(2, '0');
 }
 
 // Parse "Month DD" (no year) lead date strings, assuming current year.

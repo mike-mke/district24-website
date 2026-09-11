@@ -42,11 +42,13 @@ function app_build() {
     # rather than bundling React itself.
     npx esbuild src/main.jsx --bundle --outfile=js/index.compiled.js \
         --jsx-factory=React.createElement --jsx-fragment=React.Fragment --minify
+    chmod 644 js/index.compiled.js
 
     cp -a index.html build/
     cp -a css build/
     mkdir -p build/js
     cp -a js/index.compiled.js build/js/
+    chmod 644 build/js/index.compiled.js
 }
 # ── Package ───────────────────────────────────────────────────────────────────
 function app_package() {
@@ -58,6 +60,7 @@ function app_package() {
 # ── Deploy targets ────────────────────────────────────────────────────────────
 function cmd_local() {
     cp -a build/. /usr/local/nginx/html/
+    chmod 644 /usr/local/nginx/html/js/index.compiled.js
     echo "Deployed to local nginx"
 }
 
@@ -104,7 +107,6 @@ function cmd_aws() {
 # ── Entry point ───────────────────────────────────────────────────────────────
 # we always build, do not always package or deploy
 app_build
-
 
 [[ $# -ne 1 ]] && usage
 

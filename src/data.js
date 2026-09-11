@@ -39,18 +39,6 @@ export const SERVICE_POSITIONS = [
 ];
 
 // ══════════════════════════════════════════════════════════════
-//  HOME PAGE — UPCOMING EVENTS
-// ══════════════════════════════════════════════════════════════
-export const UPCOMING_EVENTS = [
-  { isoDate: '2026-08-13', label: '164 & More • Open Speaker Meeting', link: 'https://drive.google.com/file/d/1iGsdE-wXnQHO5UB9YRaMf8yqQj44IAWZ/view' },
-  { isoDate: '2026-08-15', label: 'New Day Club • Open Speaker Meeting', link: 'https://drive.google.com/file/d/1Bb3o5ip3kiWMtjhEfQETEBUvYZTFS1Se/view' },
-  { isoDate: '2026-09-25', label: 'Sobriety Social • Cedarburg American Legion', link: 'https://drive.google.com/file/d/1HQVq1DiAb4pMFr1-WPKGc5CvuwJQmnJF/view' },
-  { isoDate: '2026-09-27', label: 'Area 75 Pre-Conference Assembly', link: null },
-  { isoDate: '2026-10-17', label: 'District 24 Fall Workshop (details TBD)',             link: null },
-  { isoDate: '2026-11-06', label: 'Area 75 Conference',             link: null },
-];
-
-// ══════════════════════════════════════════════════════════════
 //  WORKSHOPS PAGE — HISTORY
 // ══════════════════════════════════════════════════════════════
 export const WORKSHOPS = [
@@ -182,10 +170,11 @@ export const LEADS_SATURDAY_STEP_CSV_URL =
   'https://docs.google.com/spreadsheets/d/e/2PACX-1vRAx7fyOhFV3ucvbu-kQgHVSjjbhuACmW77HDVxKlWO7IJb5CJd--GRmymoQXWFxWx4dGSryNQ4ZTba/pub?gid=362373249&single=true&output=csv';
 
 // ══════════════════════════════════════════════════════════════
-//  WOMEN'S BIG BOOK — QUARTERLY SPEAKERS
+//  WOMEN'S BIG BOOK — QUARTERLY SPEAKERS (live Google Sheet, CSV export)
 // ══════════════════════════════════════════════════════════════
-export const SPEAKERS_WOMENS_BIG_BOOK = [
-  { date: 'September 2026',  type: 'Open Speaker Meeting',   speaker: 'TBD' },
-];
-
 export const MONDAY_WOMENS_BIG_BOOK_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSoYA_XUy6sI6yGI334m6ZSglBlY-yK7Btm-qTN8Gn1L4ssgeRsg4JsylwW49Z5A7TXQf-L7gxIzfVu/pub?gid=370280706&single=true&output=csv'
+
+// ══════════════════════════════════════════════════════════════
+//  DISTRICT 24 (and AREA 75) EVENTS (live Google Sheet, CSV export)
+// ══════════════════════════════════════════════════════════════
+export const DISTRICT_24_EVENTS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR9kXYRVHQl6rxt0XE8U6dzpHQureUDy4599_gJxDb1OUQXg4WNBTDjE5Ylndf5IhkSrAUfs7k2NgMR/pub?gid=991828504&single=true&output=csv'
