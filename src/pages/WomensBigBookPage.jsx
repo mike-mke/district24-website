@@ -54,18 +54,29 @@ export function WomensBigBookPage() {
         <p className="page-p text-sm text-muted">Women's Meeting · Handicap Access · Group ID: 000035432</p>
       </Card>
       <Card title="Upcoming Quarterly Speakers">
-        <div className="table-wrap">
-          <table className="data-table">
-            <thead><tr><th>Date</th><th>Description</th></tr></thead>
-            <tbody>
-              {speakers.map((s, i) => (
-                <tr key={i} className={i % 2 === 0 ? 'stripe' : 'white'}>
-                  <td><strong>{s.label}</strong></td><td>{s.description}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+          <p className="page-p">
+              <b>12th Annual Open Speaker Meeting!!</b>&nbsp;(<a target='_blank' href='https://drive.google.com/file/d/1bJOqPvY9z_Yku78HHfahV6Gwzl0E6xUj/view'>Flyer</a>)<br/>
+              <b>Speakers</b>: Paul G - Al-Anon and Abby S - AA<br/>
+              <b>Time</b>: 6:00 PM Gathering, 6:30 Speakers<br/>
+              <b>Location</b>: Christ Church, Mequon <br/>
+              13460 N. Port Washington Rd
+              &nbsp;<i>(north of Highland Rd)</i><br/>
+              <b>Open meeting – all are welcome</b>
+          </p>
+      </Card>
+      <Card title="Upcoming Speakers">
+            <div className="table-wrap">
+                <table className="data-table">
+                    <thead><tr><th>Date</th><th>Description</th></tr></thead>
+                    <tbody>
+                    {speakers.map((s, i) => (
+                        <tr key={i} className={i % 2 === 0 ? 'stripe' : 'white'}>
+                            <td><strong>{s.label}</strong></td><td>{s.description}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
       </Card>
     </div>
   );
