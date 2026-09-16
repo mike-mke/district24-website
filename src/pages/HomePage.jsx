@@ -116,12 +116,17 @@ export function HomePage() {
       </Card>
 
       <Card className="card--tinted">
-        <p className="page-p">
+          {/*<p className="page-p">*/}
+          <p>
           Questions about District 24, Area 75, or A.A.?{' '}
           Contact us at{' '}
           <a href="mailto:info@aadistrict24.org" className="inline-link bold">info@aadistrict24.org</a>
         </p>
       </Card>
+        <br/>
+        <p className="centered">
+            <span className="text-navy bold italic">Open District 24 <a target="_blank" href="https://drive.google.com/file/d/1qmuSAf2tNNXkwAtQ-qxsV0cCPpA1RYBw/view">'When and Where'</a>&nbsp;(Meeting Directory)</span>
+        </p>
     </div>
   );
 }

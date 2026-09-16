@@ -33,6 +33,7 @@ main  { flex: 1; background: var(--color-off-white); }
 .page-h3        { font-size: 1.05rem; font-weight: 600; color: var(--color-navy-light); margin-top: 1.25rem; margin-bottom: 0.5rem; }
 .page-p         { line-height: 1.7; margin-bottom: 1rem; color: var(--color-text-dark); }
 .page-p:last-child { margin-bottom: 0; }
+.centered       { text-align: center; }
 
 /* ── Card ─────────────────────────────────────────────────── */
 .card                { background: var(--color-card-bg); border: 1px solid var(--color-card-border); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: 0 2px 8px rgba(27,42,74,.07); }
