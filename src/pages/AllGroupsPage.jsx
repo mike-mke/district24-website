@@ -81,6 +81,8 @@ export function AllGroupsPage() {
         ))}
         {visible.length === 0 && <div className="meetings-empty">No meetings match your search.</div>}
       </div>
+      <br/>
+      <span className="text-navy bold italic">Open District 24 <a target="_blank" href="https://drive.google.com/file/d/1qmuSAf2tNNXkwAtQ-qxsV0cCPpA1RYBw/view">'When and Where'</a></span>
     </div>
   );
 }

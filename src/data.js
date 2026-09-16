@@ -26,16 +26,16 @@ export const NAV_GROUPS = [
 //  HOME PAGE — SERVICE POSITIONS
 // ══════════════════════════════════════════════════════════════
 export const SERVICE_POSITIONS = [
-  { pos: 'Accessibilities',   name: 'Julie S',         email: null,                    term: '2026-27' },
-  { pos: 'Alternate DCM',     name: 'Carmen P',        email: '',                      term: '2025-26' },
-  { pos: 'Corrections',       name: 'Abbe M & Gary B', email: null,                    term: '2026-27' },
-  { pos: 'CPC',               name: 'Tom K',           email: 'tomkopka@wi.rr.com',    term: '2025-26' },
-  { pos: 'DCM',               name: 'Jeff M',          email: 'jeffmay7787@att.net',   term: '2025-26' },
-  { pos: 'Grapevine',         name: 'Bob H',           email: 'rehackettiii@me.com',   term: '2025-26' },
-  { pos: 'Public Information',name: 'Jess G',          email: 'j94830412@gmail.com',   term: '2026-27' },
-  { pos: 'Secretary',         name: 'Megan N',         email: 'megneisius@gmail.com',  term: '2026-27' },
-  { pos: 'Technology',        name: 'Mike L',          email: 'mike.mke.wi@gmail.com', term: '2025-26' },
-  { pos: 'Treasurer',         name: 'Allison D',       email: 'adozark@gmail.com',     term: '2026-27' },
+  { pos: 'Accessibilities',   name: 'Julie S',         email: null,                          term: '2026-27' },
+  { pos: 'Alternate DCM',     name: '',                email: '',                            term: '2025-26' },
+  { pos: 'Corrections',       name: 'Gary B',          email: null,                          term: '2026-27' },
+  { pos: 'CPC',               name: 'Tom K',           email: 'tomkopka@wi.rr.com',          term: '2025-26' },
+  { pos: 'DCM',               name: 'Carmen P',        email: 'dcm@aadistrict24.org',        term: '2025-26' },
+  { pos: 'Grapevine',         name: 'Bob H',           email: 'rehackettiii@me.com',         term: '2025-26' },
+  { pos: 'Public Information',name: 'Jess G',          email: 'j94830412@gmail.com',         term: '2026-27' },
+  { pos: 'Secretary',         name: 'Megan N',         email: 'secretary@aadistrict24.org',  term: '2026-27' },
+  { pos: 'Technology',        name: 'Mike L',          email: 'admin@aadistrict24.org',      term: '2025-26' },
+  { pos: 'Treasurer',         name: 'Allison D',       email: 'treasurer@aadistrict24.org',  term: '2026-27' },
 ];
 
 // ══════════════════════════════════════════════════════════════
