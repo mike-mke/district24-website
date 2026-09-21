@@ -14,7 +14,7 @@ export function SaturdayStepPage() {
       .then(res => res.text())
       .then(text => {
         const rows = parseCsv(text)
-          .map(r => ({ date: new Date(r.Date), speaker: r.Speaker, topic: r.Topic }))
+          .map(r => ({ date: new Date(r.Date), speaker: r.Speaker, topic: r.Topic, link: r.Link }))
           .filter(r => !isNaN(r.date) && daysAgo(r.date) <= MAX_AGE_DAYS)
           .sort((a, b) => a.date - b.date)
           .slice(0, MAX_LEAD_ROWS);
@@ -46,7 +46,7 @@ export function SaturdayStepPage() {
             <tbody>
               {leads.map((l, i) => (
                 <tr key={i} className={i % 2 === 0 ? 'stripe' : 'white'}>
-                  <td><strong>{formatShortDate(l.date)}</strong></td><td>{l.speaker}</td><td className="italic text-muted">{l.topic}</td>
+                  <td><strong>{formatShortDate(l.date)}</strong></td><td>{l.link ? <ExtLink href={l.link}>{l.speaker}</ExtLink> : l.speaker}</td><td className="italic text-muted">{l.topic}</td>
                 </tr>
               ))}
             </tbody>

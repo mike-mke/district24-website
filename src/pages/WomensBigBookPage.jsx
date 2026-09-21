@@ -19,6 +19,7 @@ export function WomensBigBookPage() {
             return {
               date,
               description: r.Description,
+              link: r.Link,
               label: exact ? `${MONTH_NAMES[date.getMonth()]} ${date.getDate()}` : MONTH_NAMES[date.getMonth()],
             };
           })
@@ -71,7 +72,7 @@ export function WomensBigBookPage() {
                     <tbody>
                     {speakers.map((s, i) => (
                         <tr key={i} className={i % 2 === 0 ? 'stripe' : 'white'}>
-                            <td><strong>{s.label}</strong></td><td>{s.description}</td>
+                            <td><strong>{s.label}</strong></td><td>{s.link ? <ExtLink href={s.link}>{s.description}</ExtLink> : s.description}</td>
                         </tr>
                     ))}
                     </tbody>
