@@ -73,15 +73,15 @@ export function HomePage() {
 
       <div className="two-col">
           <Card className="card--accent-yellow">
-              <h2 className="card__h2">⭐ Featured Meeting</h2>
-              <p className="page-p semibold">Saukville Big Book Meeting (65294)</p>
+              <h2 className="card__h2">⭐ District 24 Fall Workshop</h2>
+              {/*<p className="page-p semibold">Challenges and Promises of Recovery</p>*/}
+              <p className="page-p"><strong>Challenges and Promises of Recovery</strong><br/>Open Meeting, Everyone is Welcome</p>
               <p className="page-p">
-                  Living Hope Lutheran Church<br />
-                  851 W Dekora St<br />
-                  Saukville, WI 53080<br />
-                  <em>Enter off Hwy 33</em>
+                  Christ Church<br />
+                  13460 N Port Washington Rd<br />
+                  Mequon, WI 53092
               </p>
-              <p className="page-p"><strong>Thursday 7:00 PM</strong></p>
+              <p className="page-p"><strong>Saturday, October 17 &nbsp; 09:30-12:30</strong> &nbsp; &nbsp; (speakers start at 10:00 AM)</p>
           </Card>
         <Card className="card--accent-top">
           <h2 className="card__h2">📅 District 24 Monthly Meetings</h2>
