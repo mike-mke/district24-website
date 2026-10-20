@@ -81,7 +81,11 @@ export function HomePage() {
                   13460 N Port Washington Rd<br />
                   Mequon, WI 53092
               </p>
-              <p className="page-p"><strong>Saturday, October 17 &nbsp; 09:30-12:30</strong> &nbsp; &nbsp; (speakers start at 10:00 AM)</p>
+              <p className="page-p">
+                  <strong>Saturday, October 17 &nbsp; 09:30-12:30</strong> &nbsp; &nbsp; (speakers start at 10:00 AM)<br/><br/>
+                  <a href="https://us06web.zoom.us/j/86423007839?pwd=TzaGeBalHhPlfb96RfkDQ0dpW70ERG.1">Join Zoom Meeting</a><br/>
+                  ID: 864 2300 7839 · Passcode: District24
+              </p>
           </Card>
         <Card className="card--accent-top">
           <h2 className="card__h2">📅 District 24 Monthly Meetings</h2>
