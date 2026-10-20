@@ -72,21 +72,17 @@ export function HomePage() {
       </Card>
 
       <div className="two-col">
-          <Card className="card--accent-yellow">
-              <h2 className="card__h2">⭐ District 24 Fall Workshop</h2>
-              {/*<p className="page-p semibold">Challenges and Promises of Recovery</p>*/}
-              <p className="page-p"><strong>Challenges and Promises of Recovery</strong><br/>Open Meeting, Everyone is Welcome</p>
+        <Card className="card--accent-yellow">
+              <h2 className="card__h2">⭐ Featured Meeting</h2>
+              <p className="page-p semibold">Saukville Big Book Meeting (65294)</p>
               <p className="page-p">
-                  Christ Church<br />
-                  13460 N Port Washington Rd<br />
-                  Mequon, WI 53092
+                  Living Hope Lutheran Church<br />
+                  851 W Dekora St<br />
+                  Saukville, WI 53080<br />
+                  <em>Enter off Hwy 33</em>
               </p>
-              <p className="page-p">
-                  <strong>Saturday, October 17 &nbsp; 09:30-12:30</strong> &nbsp; &nbsp; (speakers start at 10:00 AM)<br/><br/>
-                  <a href="https://us06web.zoom.us/j/86423007839?pwd=TzaGeBalHhPlfb96RfkDQ0dpW70ERG.1">Join Zoom Meeting</a><br/>
-                  ID: 864 2300 7839 · Passcode: District24
-              </p>
-          </Card>
+              <p className="page-p"><strong>Thursday 7:00 PM</strong></p>
+        </Card>
         <Card className="card--accent-top">
           <h2 className="card__h2">📅 District 24 Monthly Meetings</h2>
           <p className="page-p"><strong>When:</strong> 3rd Tuesday of every month <em>(except December)</em></p>
