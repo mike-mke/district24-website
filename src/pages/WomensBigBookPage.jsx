@@ -54,6 +54,7 @@ export function WomensBigBookPage() {
         </p>
         <p className="page-p text-sm text-muted">Women's Meeting · Handicap Access · Group ID: 000035432</p>
       </Card>
+      {/*
       <Card title="Upcoming Quarterly Speakers">
           <p className="page-p">
               <b>12th Annual Open Speaker Meeting!!</b>&nbsp;(<a target='_blank' href='https://drive.google.com/file/d/1bJOqPvY9z_Yku78HHfahV6Gwzl0E6xUj/view'>Flyer</a>)<br/>
@@ -65,6 +66,7 @@ export function WomensBigBookPage() {
               <b>Open meeting – all are welcome</b>
           </p>
       </Card>
+      */}
       <Card title="Upcoming Speakers">
             <div className="table-wrap">
                 <table className="data-table">
