@@ -38,15 +38,15 @@ git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 ```
 
-To get the project source code:
+Before cloning, set up your GitHub account and SSH key by following [GITHUB.md](GITHUB.md). Then, to get the project source code:
 ```bash
 cd
 mkdir Projects
 cd Projects
-git clone https://github.com/mike-mke/district24-website.git
+git clone git@github.com:mike-mke/district24-website.git
 cd district24-website
 ```
-Day-to-day: `git pull` to get latest changes, `git checkout -b my-change` to start work on a branch, `git add` / `git commit` to save changes, `git push` to share them.
+Day-to-day: `git pull` to get latest changes, `git checkout -b my-change` to start work on a branch, `git add` / `git commit` to save changes, `git push` to share them. See [GITHUB.md](GITHUB.md) for the full branch and Pull Request workflow.
 
 
 ## Node.js (also provides npm)

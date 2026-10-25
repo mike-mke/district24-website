@@ -11,17 +11,18 @@ DEPLOY="${1:-}"
 AMPLIFY_APP_ID="d2zcneygndvg6j"
 AMPLIFY_BRANCH="production"
 AWS_PROFILE="district24"
-LOCAL_PORT="8080"
-#LOCAL_PORT="80"
+#LOCAL_PORT="8080"
+LOCAL_PORT="80"
 NGINX_HTML="${NGINX_HTML:-/usr/local/nginx/html}"
 
 usage() {
-  echo "Usage: $0 [local|docker|aws]"
+  echo "Usage: $0 [local|docker|aws|aws-login]"
   echo ""
-  echo "  build   Build the frontend and stop)"
-  echo "  local   Build frontend and deploy to local nginx (${NGINX_HTML})"
-  echo "  docker  Build fresh Docker image and run via docker-compose"
-  echo "  aws     Build, tag, push Docker image and redeploy to AWS Amplify"
+  echo "  build      Build the frontend and stop"
+  echo "  local      Build frontend and deploy to local nginx (${NGINX_HTML})"
+  echo "  docker     Build fresh Docker image and run via docker-compose"
+  echo "  aws        Build, tag, push Docker image and redeploy to AWS Amplify"
+  echo "  aws-login  if not already logged into AWS, will prompt in browser"
   echo ""
   echo "When deploying to AWS, first run:  aws login --profile $AWS_PROFILE"
   echo ""
@@ -104,6 +105,11 @@ function cmd_aws() {
     echo "Deployment started (job $JOB_ID)!"
 }
 
+function cmd_aws_login() {
+    # If not already logged in (to AWS), this will prompt you to do so in your default browser.
+    aws login --profile $AWS_PROFILE
+}
+
 # ── Entry point ───────────────────────────────────────────────────────────────
 # we always build, do not always package or deploy
 app_build
@@ -111,9 +117,10 @@ app_build
 [[ $# -ne 1 ]] && usage
 
 case "$1" in
-  build)  ;;
-  local)  cmd_local  ;;
-  docker) cmd_docker ;;
-  aws)    cmd_aws    ;;
-  *)      usage      ;;
+  build)      ;;
+  local)      cmd_local  ;;
+  docker)     cmd_docker ;;
+  aws)        cmd_aws    ;;
+  aws-login)  cmd_aws_login   ;;
+  *)          usage      ;;
 esac
